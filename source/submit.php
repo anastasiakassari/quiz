@@ -3,14 +3,17 @@
 <?php
 
 	session_start();
+	#Get end time
 	$end = microtime(true);
+	#Array with the number of right answer for each question
 	$correct = $_SESSION['correct'];
+	#Total time
 	$time = $end - $_SESSION['start'];
 	$num = 0;
 	for ($i = 0; $i < count($correct); $i++) {
-		if (isset($_POST[$i])) {
-			if ($_POST[$i] === $correct[$i]) {
-				$num++;
+		if (isset($_POST[$i])) { #If the player has chosen an answer (no default radio button in the form)
+			if ($_POST[$i] === $correct[$i]) { #Correct answer
+				$num++; 
 			}
 		}
 	}
